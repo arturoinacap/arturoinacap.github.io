@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body class="black" style="background-image: url('img/asfalt-light.png');">
+<header>
+    <div class="navbar-fixed">
+<!--navbar-->
+<nav class="nav-extended white">
+    <div class="nav-wrapper center">
+      <a href="netflix.com" class="brand-logo"><img src="img/netflixx.gif" height="60"></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+         
+         
+      </ul>
+    </div>
+</nav>
+</div>
+
+<!--SIDENAV-->
+<!--<ul id="slide-out" class="sidenav">
+    <li><div class="user-view">
+      <div class="background">
+        <img src="img/fondo.jpg">
+      </div>
+      <a href="#user"><img class="circle" src="img/perfil.png"></a>
+      <a href="#name"><span class="white-text name">Arturo Bustos</span></a>
+      <a href="#email"><span class="white-text email">arturobustosinacap@gmail.com</span></a>
+    </div></li>
+     
+    <li><a href="#!">trabajo para:</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Subheader</a></li>
+    <li><a class="waves-effect" href="#!">Progra web inacap</a></li>
+  </ul>
+  <a href="#" data-target="slide-out" class="sidenav-trigger">
+      <i class="material-icons">menu</i></a>-->
+<!--FIN SIDENAV-->
+</header>
+<!-----Slider-->
+
+<div class="slider">
+    <ul class="slides">
+      <li>
+        <img src="img/s1.jpg" class="responsive-img"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>This is our big Tagline!</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="img/s2.jpg" class="responsive-img"> <!-- random image -->
+        <div class="caption left-align">
+          <h3>Left Aligned Caption</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="img/s3.jpg" class="responsive-img"> <!-- random image -->
+        <div class="caption right-align">
+          <h3>Right Aligned Caption</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      
+    </ul>
+  </div>
+
+<!---fin slider-->
+<div class="row">
+    <div class="col l12 center white-text">
+        <h2 style="font-family: 'Anton', sans-serif;">Las 20 peliculas mejores </h2>
+        <h3 style="font-family: 'Anton', sans-serif;">2019</h3>
+    </div>
+</div>
+    
+    <div id="app">
+
+<!--barra de carga-->
+
+     <div class="card-panel center" v-if="estado==true">
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+     </div>
+     <!---fin barra de carga-->
+
+     <!--api-->
+
+         <div class="row" v-if="estado==false">
+             <div class="col l8 offset-l2"> 
+                 <div style="border-radius: 20px" class="card-panel center red darken-2">
+                     <ul>
+                         <li v-for="item in users" class="white-text">
+                       <p style="font-family: 'Bree Serif', serif;" >titulo original: {{item.title}}</p>     
+                           <p style="font-family: 'Bree Serif', serif;">votaciones:  {{item.vote_average}}</p>
+                           <button @click="ver_modal(item)" class="btn black">ver info</button>
+                            
+                           <hr  color="black">
+                         </li>
+                     </ul>
+                       
+                 </div>
+             </div>
+         </div>
+
+<!--fin api-->
+            
+
+
+    </div>
+    <!--FOOTER-->
+    <footer class="page-footer grey darken-1">
+        
+          <div class="row">
+            <div class="col l6 s12">
+              <h5 class="white-text">Creado por</h5>
+              <p class="grey-text text-lighten-4">Arturo Bustos</p>
+            </div>
+            <div class="col l4 offset-l2 s12 center">
+              <h5 class="white-text">Contacto</h5>
+              <a href="https://es-la.facebook.com/"><img src="img/icons8-facebook-nuevo-24.png"></a>
+               
+                 
+              
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright">
+           
+          © 2019 Copyright Text
+           
+          </div>
+        </div>
+      </footer>
+      <!--FIN FOOTER-->
+
+
+
+       <!--MODAL-->
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>informacion de pelicula</h4>
+       <p>titulo original:दिलवाले दुल्हनिया ले जायेंगे </p>
+       <p>descripcion: "Acusado del asesinato de su mujer, Andrew Dufresne, tras ser condenado a cadena perpetua, es enviado a la prisión de Shawshank. Con el paso de los años conseguirá ganarse la confianza del director del centro y el respeto de sus compañeros presidiarios, especialmente de Red, el jefe de la mafia de los sobornos</p>
+
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">cerrar</a>
+    </div>
+  </div>
+
+      <!--FIN MODAL-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+       new Vue({
+         el:'#app',
+         data:{
+             estado:true,
+             users:[],
+            url:'https://api.themoviedb.org/3/movie/top_rated?api_key=7e38bf7d7727f2c0ac63b558261d8d19&language=es-ES&page=1',
+            usuario:null
+           
+         },
+         methods:{
+             async cargar(){
+                 var resultado = await axios.get(this.url); 
+                 this.users = resultado.data.results; 
+                 console.log(resultado.data); 
+                 this.estado=false; 
+             },
+             ver_modal(item){
+                 this.usuario = item; 
+                var instance = M.Modal.getInstance(document.getElementById('modal1'));
+                instance.open(); 
+             }
+              
+            },
+            created(){
+                this.cargar();
+
+                
+            },
+
+            mounted(){
+                document.addEventListener('DOMContentLoaded', function() {
+                 var elems = document.querySelectorAll('.modal');
+                 var instances = M.Modal.init(elems);
+    
+                 document.addEventListener('DOMContentLoaded', function() {
+                  var elems = document.querySelectorAll('.materialboxed');
+                  var instances = M.Materialbox.init(elems, options);
+        
+  });
+});           
+  
+            }
+         
+       }); 
+    </script>
+    <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                    var elems = document.querySelectorAll('.sidenav');
+                    var instances = M.Sidenav.init(elems);
+  });
+    </script>
+    
+</body>
+</html>
